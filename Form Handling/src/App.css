@@ -1,0 +1,22 @@
+.Card{
+  height: 600px;
+  width: 500px;
+  border: 2px solid black;
+  background-color: greenyellow;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+h1{
+  font-size: 3vw;
+}
+
+input{
+  font-size: 2vw;
+}
+button{
+  padding:12px ;
+  margin-top: 25px;
+}
