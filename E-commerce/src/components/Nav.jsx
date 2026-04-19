@@ -4,7 +4,14 @@ import { IoMdSearch } from "react-icons/io";
 import { BsCart3 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
+//Redux toolkit
+import { useDispatch, useSelector } from 'react-redux';
+
+
 const Nav = () => {
+    const dispatch = useDispatch();
+    const items = useSelector((state)=> state)
+    console.log(items)
   return (
     <div>
       <div className="top bg-gray-800 text-white flex items-center justify-between px-5 py-6">
@@ -20,7 +27,7 @@ const Nav = () => {
            </form>
            <div className="cartbox flex  ">
             <BsCart3  className='text-3xl'/>
-            <span className='absolute top-4 right-4.5'>0</span>
+            <span className='absolute top-4 right-4.5'>{items.cart.length}</span>
            </div>
       </div>
       <div className="bottom bg-gray-700 text-white flex 

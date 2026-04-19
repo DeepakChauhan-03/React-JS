@@ -6,6 +6,7 @@ import Product from '../components/Product'
 import { dummydata } from '../Dummy'
 import { useState } from 'react'
 
+
 const Home = () => {
     let [cate, setCate] = useState(dummydata);
     function filterProducts(category){
