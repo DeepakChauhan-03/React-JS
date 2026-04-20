@@ -25,10 +25,12 @@ const Nav = () => {
             placeholder='Search items...'/>
              <IoMdSearch className='text-2xl w-[20%]' />
            </form>
-           <div className="cartbox flex  ">
+           <Link to={"/cart"}>
+           <div className="cart-box flex  ">
             <BsCart3  className='text-3xl'/>
             <span className='absolute top-4 right-4.5'>{items.cart.length}</span>
            </div>
+           </Link>
       </div>
       <div className="bottom bg-gray-700 text-white flex 
       items-center justify-center gap-9 text-xl p-3 shadow-xl/30 ">

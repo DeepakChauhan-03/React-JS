@@ -13,7 +13,10 @@ const Product = ({id,name,image,price}) => {
                <span className='name text-2xl font-semibold'>{name}</span>
                <span className='price text-xl font-sm'>Rs {price}/-</span>
                <button 
-               onClick={()=> dispatch(AddItem(id))}
+               onClick={()=>{
+                 dispatch(AddItem({name:name, image:image, price:price, id:id}))
+                alert("Product added successfully...")
+               }}
                className='bg-gray-800 rounded px-6 py-1 text-white text-lg font-semibold'> Add +</button>
           </div>
     </div>
