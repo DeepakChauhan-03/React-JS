@@ -50,6 +50,7 @@ const Navbar = () => {
             <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-orange-600 transition font-medium">Home</button>
             <button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-orange-600 transition font-medium">Services</button>
             <button onClick={() => scrollToSection('cars')} className="text-gray-700 hover:text-orange-600 transition font-medium">Cars</button>
+            <button onClick={() => scrollToSection('outstation')} className="text-gray-700 hover:text-orange-600 transition font-medium">Outstation</button>
             <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-orange-600 transition font-medium">About</button>
             <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-orange-600 transition font-medium">Contact</button>
           </div>
@@ -84,6 +85,7 @@ const Navbar = () => {
               <button onClick={() => scrollToSection('home')} className="text-left text-gray-700 hover:text-orange-600 transition font-medium py-2">Home</button>
               <button onClick={() => scrollToSection('services')} className="text-left text-gray-700 hover:text-orange-600 transition font-medium py-2">Services</button>
               <button onClick={() => scrollToSection('cars')} className="text-left text-gray-700 hover:text-orange-600 transition font-medium py-2">Cars</button>
+              <button onClick={() => scrollToSection('outstation')} className="text-left text-gray-700 hover:text-orange-600 transition font-medium py-2">Outstation</button>
               <button onClick={() => scrollToSection('about')} className="text-left text-gray-700 hover:text-orange-600 transition font-medium py-2">About</button>
               <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-orange-600 transition font-medium py-2">Contact</button>
             </div>
@@ -221,7 +223,7 @@ const ServiceCard = ({ icon: Icon, title, description, delay }) => {
       className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="bg-linear-to-br from-orange-500 to-orange-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+      <div className="bg-gradient-to-br from-orange-500 to-orange-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
         <Icon className="w-8 h-8 text-white" />
       </div>
       <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
@@ -256,7 +258,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-linear-to-br from-gray-50 to-white">
+    <section id="services" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -283,6 +285,185 @@ const Services = () => {
   );
 };
 
+// Outstation Routes Card Component
+const RouteCard = ({ route }) => {
+  const whatsappNumber = "919999999999";
+  const whatsappMessage = encodeURIComponent(
+    `Hello, I want to book a taxi for outstation trip.\n\nRoute: ${route.from} to ${route.to}\nDistance: ${route.distance}\nPickup Date: \nPickup Time: \nReturn Trip: `
+  );
+
+  return (
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+      <div className="relative h-32 bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+        <MapPin className="w-16 h-16 text-white opacity-20 absolute" />
+        <div className="relative z-10 text-center text-white">
+          <p className="text-sm font-medium opacity-90">{route.from}</p>
+          <div className="flex items-center gap-2 my-2">
+            <div className="w-8 h-0.5 bg-white"></div>
+            <Car className="w-6 h-6" />
+            <div className="w-8 h-0.5 bg-white"></div>
+          </div>
+          <p className="text-sm font-medium opacity-90">{route.to}</p>
+        </div>
+      </div>
+
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-3">{route.from} → {route.to}</h3>
+        
+        <div className="space-y-2 mb-4">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-600">Distance:</span>
+            <span className="font-semibold text-gray-900">{route.distance}</span>
+          </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-600">Approx. Time:</span>
+            <span className="font-semibold text-gray-900">{route.duration}</span>
+          </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-600">Starting from:</span>
+            <span className="font-bold text-orange-600 text-lg">₹{route.startingPrice}</span>
+          </div>
+        </div>
+
+        {route.popular && (
+          <div className="bg-orange-50 text-orange-700 px-3 py-1.5 rounded-lg text-xs font-semibold mb-4 inline-block">
+            🔥 Popular Route
+          </div>
+        )}
+
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group-hover:scale-105"
+        >
+          <Phone className="w-4 h-4" />
+          Book This Trip
+        </a>
+      </div>
+    </div>
+  );
+};
+
+// Outstation Trips Section
+const OutstationTrips = () => {
+  const routes = [
+    {
+      from: "Varanasi",
+      to: "Ayodhya",
+      distance: "200 km",
+      duration: "4-5 hours",
+      startingPrice: "2400",
+      popular: true
+    },
+    {
+      from: "Varanasi",
+      to: "Delhi",
+      distance: "820 km",
+      duration: "12-14 hours",
+      startingPrice: "9800",
+      popular: true
+    },
+    {
+      from: "Varanasi",
+      to: "Gorakhpur",
+      distance: "230 km",
+      duration: "4-5 hours",
+      startingPrice: "2800",
+      popular: false
+    },
+    {
+      from: "Varanasi",
+      to: "Nepal (Kathmandu)",
+      distance: "450 km",
+      duration: "8-10 hours",
+      startingPrice: "5400",
+      popular: true
+    },
+    {
+      from: "Varanasi",
+      to: "Patna (Bihar)",
+      distance: "250 km",
+      duration: "5-6 hours",
+      startingPrice: "3000",
+      popular: false
+    },
+    {
+      from: "Varanasi",
+      to: "Lucknow",
+      distance: "320 km",
+      duration: "6-7 hours",
+      startingPrice: "3800",
+      popular: true
+    },
+    {
+      from: "Varanasi",
+      to: "Allahabad (Prayagraj)",
+      distance: "125 km",
+      duration: "2-3 hours",
+      startingPrice: "1500",
+      popular: false
+    },
+    {
+      from: "Varanasi",
+      to: "Gaya (Bihar)",
+      distance: "240 km",
+      duration: "5-6 hours",
+      startingPrice: "2900",
+      popular: false
+    },
+    {
+      from: "Varanasi",
+      to: "Bodhgaya",
+      distance: "250 km",
+      duration: "5-6 hours",
+      startingPrice: "3000",
+      popular: true
+    }
+  ];
+
+  return (
+    <section id="outstation" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Popular <span className="text-orange-600">Outstation Routes</span>
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Travel across UP, Bihar, Nepal and beyond with our comfortable outstation taxi service
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {routes.map((route, index) => (
+            <RouteCard key={index} route={route} />
+          ))}
+        </div>
+
+        {/* Custom Route CTA */}
+        <div className="mt-12 bg-gradient-to-br from-orange-50 to-orange-100 p-8 sm:p-12 rounded-3xl text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+            Need a Custom Route?
+          </h3>
+          <p className="text-gray-700 mb-6 text-lg max-w-2xl mx-auto">
+            Planning a trip to somewhere not listed? We cover entire Uttar Pradesh, Bihar, and nearby states. Get a custom quote now!
+          </p>
+          <a
+            href={`https://wa.me/919999999999?text=${encodeURIComponent("Hello, I need a custom outstation trip quote.\n\nFrom: \nTo: \nDate: \nPassengers: ")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg"
+          >
+            <Phone className="w-5 h-5" />
+            Get Custom Quote
+            <ChevronRight className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Car Card Component
 const CarCard = ({ car }) => {
   const whatsappNumber = "919999999999";
@@ -294,14 +475,7 @@ const CarCard = ({ car }) => {
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
       {/* Car Image */}
       <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center overflow-hidden">
-        {/* <Car className="w-32 h-32 text-orange-600 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} /> */}
-       <div className="h-48 w-full bg-gray-100 flex items-center justify-center overflow-hidden rounded-xl">
-       <img
-    src={car.image}
-    alt={car.name}
-    className="max-h-full max-w-full object-contain"
-  />
-   </div>
+        <Car className="w-32 h-32 text-orange-600 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
         {car.featured && (
           <div className="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
             Popular
@@ -348,12 +522,12 @@ const CarCard = ({ car }) => {
 // Cars Section
 const Cars = () => {
   const cars = [
-    { name: "Swift Dzire", price: 12, seats: 4, ac: "AC Available", featured: false ,image:"https://tse1.mm.bing.net/th/id/OIP.ktgOG_64P3xTfiJ2_peDRwHaDU?rs=1&pid=ImgDetMain&o=7&rm=3"},
-    { name: "Toyota Innova", price: 13, seats: 4, ac: "AC Available", featured: false ,image:"https://th.bing.com/th/id/OIP.q-X2zsPbywAvscgM-LpT8wHaEy?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" },
-    { name: "Maruti Ertiga", price: 16, seats: 6, ac: "AC Available", featured: true, image:"https://tse4.mm.bing.net/th/id/OIP.CqxF-4mAmc3aBYG5DeIPJwHaD9?rs=1&pid=ImgDetMain&o=7&rm=3" },
-    { name: "Aura", price: 19, seats: 7, ac: "AC Available", featured: true, image:"https://tse4.mm.bing.net/th/id/OIP.0MSHgzXJq0H2YrQkU7nW6wHaEP?rs=1&pid=ImgDetMain&o=7&rm=3" },
-    { name: "Kia Carens", price: 18, seats: 6, ac: "AC Available", featured: false, image:"https://ymimg1.b8cdn.com/resized/car_model/10653/pictures/13372468/webp_listing_main_2023_Hyundai_Creta_Exterior_01.web" },
-    { name: "Tempo Traveller", price: 25, seats: 12, ac: "AC Available", featured: false, image:"https://tse1.mm.bing.net/th/id/OIP.NMVpW7F2Zu2fdUhBe45jSAHaEK?w=2560&h=1440&rs=1&pid=ImgDetMain&o=7&rm=3" }
+    { name: "Swift Dzire", price: 12, seats: 4, ac: "AC Available", featured: false },
+    { name: "Toyota Etios", price: 13, seats: 4, ac: "AC Available", featured: false },
+    { name: "Maruti Ertiga", price: 16, seats: 6, ac: "AC Available", featured: true },
+    { name: "Innova Crysta", price: 19, seats: 7, ac: "AC Available", featured: true },
+    { name: "Kia Carens", price: 18, seats: 6, ac: "AC Available", featured: false },
+    { name: "Tempo Traveller", price: 25, seats: 12, ac: "AC Available", featured: false }
   ];
 
   return (
@@ -701,6 +875,7 @@ export default function VaranasiTaxiApp() {
       <Hero />
       <Services />
       <Cars />
+      <OutstationTrips />
       <WhyChooseUs />
       <About />
       <Contact />
