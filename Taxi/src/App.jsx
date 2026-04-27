@@ -295,8 +295,8 @@ const RouteCard = ({ route }) => {
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
       <div className="relative h-32 bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
-        <MapPin className="w-16 h-16 text-white opacity-20 absolute" />
-        <div className="relative z-10 text-center text-white">
+        {/* <MapPin className="w-16 h-16 text-white opacity-20 absolute" /> */}
+        {/* <div className="relative z-10 text-center text-white">
           <p className="text-sm font-medium opacity-90">{route.from}</p>
           <div className="flex items-center gap-2 my-2">
             <div className="w-8 h-0.5 bg-white"></div>
@@ -304,7 +304,8 @@ const RouteCard = ({ route }) => {
             <div className="w-8 h-0.5 bg-white"></div>
           </div>
           <p className="text-sm font-medium opacity-90">{route.to}</p>
-        </div>
+        </div> */}
+        <img className='h-40 w-full' src={route.image} alt="" />
       </div>
 
       <div className="p-6">
@@ -354,7 +355,8 @@ const OutstationTrips = () => {
       distance: "200 km",
       duration: "4-5 hours",
       startingPrice: "2400",
-      popular: true
+      popular: true,
+      image: "https://tse1.mm.bing.net/th/id/OIP.MBuyyyHK1Znlisi80NalVAHaEj?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       from: "Varanasi",
@@ -362,7 +364,8 @@ const OutstationTrips = () => {
       distance: "820 km",
       duration: "12-14 hours",
       startingPrice: "9800",
-      popular: true
+      popular: true,
+      image:"https://tse3.mm.bing.net/th/id/OIP.r4Z_xHDU-NWGYB6MwPzS1gHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       from: "Varanasi",
@@ -370,7 +373,8 @@ const OutstationTrips = () => {
       distance: "230 km",
       duration: "4-5 hours",
       startingPrice: "2800",
-      popular: false
+      popular: false,
+      image: "https://sacredsites.com/images/asia/india/gallery/uttar-pradesh/Gorakhnath-Temple-Gorakhpur-1.jpg"
     },
     {
       from: "Varanasi",
@@ -378,7 +382,8 @@ const OutstationTrips = () => {
       distance: "450 km",
       duration: "8-10 hours",
       startingPrice: "5400",
-      popular: true
+      popular: true,
+      image:"https://tse1.mm.bing.net/th/id/OIP.-la-yCBeX4TMu-UG7CnRLAHaE8?w=1024&h=683&rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       from: "Varanasi",
@@ -386,7 +391,8 @@ const OutstationTrips = () => {
       distance: "250 km",
       duration: "5-6 hours",
       startingPrice: "3000",
-      popular: false
+      popular: false,
+      image: "https://tse1.mm.bing.net/th/id/OIP.Dm_FV9xAEoKPSk3rwajizwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       from: "Varanasi",
@@ -394,7 +400,8 @@ const OutstationTrips = () => {
       distance: "320 km",
       duration: "6-7 hours",
       startingPrice: "3800",
-      popular: true
+      popular: true,
+      image:"https://tse3.mm.bing.net/th/id/OIP.KQDsaVJmxRsEeylH00Om3AHaEU?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       from: "Varanasi",
@@ -402,7 +409,8 @@ const OutstationTrips = () => {
       distance: "125 km",
       duration: "2-3 hours",
       startingPrice: "1500",
-      popular: false
+      popular: false,
+      image:"https://tse4.mm.bing.net/th/id/OIP.5gUasj-F1XdeIoV-Q98_oQHaDb?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       from: "Varanasi",
@@ -410,16 +418,17 @@ const OutstationTrips = () => {
       distance: "240 km",
       duration: "5-6 hours",
       startingPrice: "2900",
-      popular: false
+      popular: false,
+      image:"https://static.toiimg.com/photo/69372761/3.jpg?width=748&resize=4"
     },
-    {
-      from: "Varanasi",
-      to: "Bodhgaya",
-      distance: "250 km",
-      duration: "5-6 hours",
-      startingPrice: "3000",
-      popular: true
-    }
+    // {
+    //   from: "Varanasi",
+    //   to: "Bodhgaya",
+    //   distance: "250 km",
+    //   duration: "5-6 hours",
+    //   startingPrice: "3000",
+    //   popular: true
+    // }
   ];
 
   return (
@@ -475,7 +484,8 @@ const CarCard = ({ car }) => {
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
       {/* Car Image */}
       <div className="relative h-48 bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center overflow-hidden">
-        <Car className="w-32 h-32 text-orange-600 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+        {/* <Car className="w-32 h-32 text-orange-600 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} /> */}
+        <img className='w-full h-full bg-contain' src={car.image} alt="" />
         {car.featured && (
           <div className="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
             Popular
@@ -522,11 +532,11 @@ const CarCard = ({ car }) => {
 // Cars Section
 const Cars = () => {
   const cars = [
-    { name: "Swift Dzire", price: 12, seats: 4, ac: "AC Available", featured: false },
-    { name: "Toyota Etios", price: 13, seats: 4, ac: "AC Available", featured: false },
-    { name: "Maruti Ertiga", price: 16, seats: 6, ac: "AC Available", featured: true },
-    { name: "Innova Crysta", price: 19, seats: 7, ac: "AC Available", featured: true },
-    { name: "Kia Carens", price: 18, seats: 6, ac: "AC Available", featured: false },
+    { name: "Swift Dzire", price: 12, seats: 4, ac: "AC Available", featured: false, image:"https://tse3.mm.bing.net/th/id/OIP.CTw3Nw7_QIX-EAJsgIS5twHaDx?rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { name: "Maruti Ertiga", price: 13, seats: 4, ac: "AC Available", featured: false, image:"https://tse1.mm.bing.net/th/id/OIP.A8Aqjo5isAHPLbpv4T7cYAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { name: "Innova", price: 16, seats: 6, ac: "AC Available", featured: true, image:"https://static.vecteezy.com/system/resources/previews/020/188/849/original/toyota-innova-crysta-top-model-2393cc-automatic-transmission-turbo-engine-6-speed-gear-free-png.png" },
+    { name: "Aura", price: 19, seats: 7, ac: "AC Available", featured: true, image:"https://tse1.mm.bing.net/th/id/OIP.PYJOx_9QWJvOs2cmbRGD-wHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { name: "Kia Carens", price: 18, seats: 6, ac: "AC Available", featured: false , },
     { name: "Tempo Traveller", price: 25, seats: 12, ac: "AC Available", featured: false }
   ];
 
