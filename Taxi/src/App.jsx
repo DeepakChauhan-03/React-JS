@@ -22,7 +22,7 @@ const Navbar = () => {
     }
   };
 
-  const whatsappNumber = "919999999999";
+  const whatsappNumber = "9455522307";
   const whatsappMessage = encodeURIComponent("Hello, I want to book a taxi from Varanasi Nigam Taxi Services.");
 
   return (
@@ -98,7 +98,7 @@ const Navbar = () => {
 
 // Hero Section
 const Hero = () => {
-  const whatsappNumber = "919999999999";
+  const whatsappNumber = "9455522307";
   const whatsappMessage = encodeURIComponent("Hello, I want to book a taxi from Varanasi Nigam Taxi Services.");
 
   const scrollToSection = (id) => {
@@ -287,7 +287,7 @@ const Services = () => {
 
 // Outstation Routes Card Component
 const RouteCard = ({ route }) => {
-  const whatsappNumber = "919999999999";
+  const whatsappNumber = "9455522307";
   const whatsappMessage = encodeURIComponent(
     `Hello, I want to book a taxi for outstation trip.\n\nRoute: ${route.from} to ${route.to}\nDistance: ${route.distance}\nPickup Date: \nPickup Time: \nReturn Trip: `
   );
@@ -320,10 +320,13 @@ const RouteCard = ({ route }) => {
             <span className="text-gray-600">Approx. Time:</span>
             <span className="font-semibold text-gray-900">{route.duration}</span>
           </div>
-          <div className="flex items-center justify-between text-sm">
+ 
+         {/* Route prices        */}
+
+          {/* <div className="flex items-center justify-between text-sm">
             <span className="text-gray-600">Starting from:</span>
             <span className="font-bold text-orange-600 text-lg">₹{route.startingPrice}</span>
-          </div>
+          </div> */}
         </div>
 
         {route.popular && (
@@ -458,7 +461,7 @@ const OutstationTrips = () => {
             Planning a trip to somewhere not listed? We cover entire Uttar Pradesh, Bihar, and nearby states. Get a custom quote now!
           </p>
           <a
-            href={`https://wa.me/919999999999?text=${encodeURIComponent("Hello, I need a custom outstation trip quote.\n\nFrom: \nTo: \nDate: \nPassengers: ")}`}
+            href={`https://wa.me/9455522307?text=${encodeURIComponent("Hello, I need a custom outstation trip quote.\n\nFrom: \nTo: \nDate: \nPassengers: ")}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg"
@@ -475,7 +478,7 @@ const OutstationTrips = () => {
 
 // Car Card Component
 const CarCard = ({ car }) => {
-  const whatsappNumber = "919999999999";
+  const whatsappNumber = "9455522307";
   const whatsappMessage = encodeURIComponent(
     `Hello, I want to book a taxi.\n\nCar: ${car.name}\nPickup: \nDrop: \nDate: \nTime: `
   );
@@ -497,10 +500,11 @@ const CarCard = ({ car }) => {
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-900 mb-2">{car.name}</h3>
         
-        <div className="flex items-baseline gap-2 mb-4">
+        {/* Car price per km */}
+        {/* <div className="flex items-baseline gap-2 mb-4">
           <span className="text-3xl font-bold text-orange-600">₹{car.price}</span>
           <span className="text-gray-600">/km</span>
-        </div>
+        </div> */}
 
         {/* Features */}
         <div className="space-y-2 mb-6">
@@ -533,11 +537,11 @@ const CarCard = ({ car }) => {
 const Cars = () => {
   const cars = [
     { name: "Swift Dzire", price: 12, seats: 4, ac: "AC Available", featured: false, image:"https://tse3.mm.bing.net/th/id/OIP.CTw3Nw7_QIX-EAJsgIS5twHaDx?rs=1&pid=ImgDetMain&o=7&rm=3" },
-    { name: "Maruti Ertiga", price: 13, seats: 4, ac: "AC Available", featured: false, image:"https://tse1.mm.bing.net/th/id/OIP.A8Aqjo5isAHPLbpv4T7cYAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { name: "Maruti Ertiga", price: 13, seats: 6, ac: "AC Available", featured: false, image:"https://tse1.mm.bing.net/th/id/OIP.A8Aqjo5isAHPLbpv4T7cYAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" },
     { name: "Innova", price: 16, seats: 6, ac: "AC Available", featured: true, image:"https://static.vecteezy.com/system/resources/previews/020/188/849/original/toyota-innova-crysta-top-model-2393cc-automatic-transmission-turbo-engine-6-speed-gear-free-png.png" },
-    { name: "Aura", price: 19, seats: 7, ac: "AC Available", featured: true, image:"https://tse1.mm.bing.net/th/id/OIP.PYJOx_9QWJvOs2cmbRGD-wHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" },
-    { name: "Kia Carens", price: 18, seats: 6, ac: "AC Available", featured: false , },
-    { name: "Tempo Traveller", price: 25, seats: 12, ac: "AC Available", featured: false }
+    { name: "Aura", price: 19, seats: 4, ac: "AC Available", featured: true, image:"https://tse1.mm.bing.net/th/id/OIP.PYJOx_9QWJvOs2cmbRGD-wHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { name: "Kia Carens", price: 18, seats: 7, ac: "AC Available", featured: false , image:"https://www.kia.com/content/dam/kwcms/kme/global/en/assets/gnb/kia-carens.png" },
+    { name: "Wagnor", price: 25, seats: 4, ac: "AC Available", featured: false , image:"https://imgd.aeplcdn.com/1056x594/n/h5360sa_1458598.jpg?q=75&wm=1"}
   ];
 
   return (
@@ -668,7 +672,7 @@ const About = () => {
 
 // Contact Section
 const Contact = () => {
-  const whatsappNumber = "919999999999";
+  const whatsappNumber = "9455522307";
   const whatsappMessage = encodeURIComponent("Hello, I want to inquire about taxi services.");
 
   return (
@@ -691,8 +695,8 @@ const Contact = () => {
                 <Phone className="w-7 h-7 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Phone Number</h3>
-              <a href="tel:+919999999999" className="text-orange-600 text-lg font-semibold hover:underline">
-                +91 9999999999
+              <a href="tel:+919455522307" className="text-orange-600 text-lg font-semibold hover:underline">
+                +91 9455522307
               </a>
               <p className="text-gray-600 mt-2 text-sm">Call us anytime</p>
             </div>
