@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import React, { useState, useEffect } from 'react';
 import { Car, Phone, Clock, Shield, Star, MapPin, Users, Wind, ChevronRight, Menu, X, Check } from 'lucide-react';
 
@@ -536,7 +537,7 @@ const CarCard = ({ car }) => {
 // Cars Section
 const Cars = () => {
   const cars = [
-    { name: "Swift Dzire", price: 12, seats: 4, ac: "AC Available", featured: false, image:"https://tse3.mm.bing.net/th/id/OIP.CTw3Nw7_QIX-EAJsgIS5twHaDx?rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { name: "Swift Dzire", price: 12, seats: 4, ac: "AC Available", featured: true, image:"https://tse3.mm.bing.net/th/id/OIP.CTw3Nw7_QIX-EAJsgIS5twHaDx?rs=1&pid=ImgDetMain&o=7&rm=3" },
     { name: "Maruti Ertiga", price: 13, seats: 6, ac: "AC Available", featured: false, image:"https://tse1.mm.bing.net/th/id/OIP.A8Aqjo5isAHPLbpv4T7cYAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" },
     { name: "Innova", price: 16, seats: 6, ac: "AC Available", featured: true, image:"https://static.vecteezy.com/system/resources/previews/020/188/849/original/toyota-innova-crysta-top-model-2393cc-automatic-transmission-turbo-engine-6-speed-gear-free-png.png" },
     { name: "Aura", price: 19, seats: 4, ac: "AC Available", featured: true, image:"https://tse1.mm.bing.net/th/id/OIP.PYJOx_9QWJvOs2cmbRGD-wHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" },
@@ -789,8 +790,15 @@ const Footer = () => {
 };
 
 // Main App
-export default function VaranasiTaxiApp() {
+export default function App() {
   return (
+    <>
+    <Helmet>
+        <title>Taxi Service in Varanasi | Book Cab Online</title>
+        <meta name="description" content="Best taxi booking service in Varanasi. Safe & affordable rides." />
+      </Helmet>
+    
+    
     <div className="font-sans antialiased">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
@@ -895,5 +903,6 @@ export default function VaranasiTaxiApp() {
       <Contact />
       <Footer />
     </div>
+    </>
   );
 }
