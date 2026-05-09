@@ -1,6 +1,8 @@
 import React from 'react'
 import Nav from '../components/Nav'
 import Categories from '../Categories'
+import {food_items} from '../food'
+import Card from '../components/Card'
 
 const Home = () => {
   return (
@@ -15,6 +17,13 @@ const Home = () => {
                 {item.icon}
                 {item.name}
               </div>
+          })
+        }
+      </div>
+      <div className='w-full flex flex-wrap justify-center gap-5 px-5'>
+        {
+          food_items.map((item)=>{
+                return <Card name={item.food_name} id={item.id} image={item.food_image} type={item.food_type} price={item.price} />
           })
         }
       </div>
