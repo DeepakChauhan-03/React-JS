@@ -7,7 +7,7 @@ import { food_items } from '../food';
 
 const Nav = () => {
  //getting data from contextAPI
-   let {input,setInput,Cate,setCate} = useContext(dataContext)
+   let {input,setInput,Cate,setCate, showCart, setshowCart} = useContext(dataContext)
 
    useEffect(()=>{
        let newlist = food_items.filter((item)=>(item.food_name.includes(input) || item.food_name.toLowerCase().includes(input)))
@@ -32,7 +32,9 @@ const Nav = () => {
             type="text" placeholder='Search here...'/>
            </form>
         
-        <div className='relative  shadow-2xl h-[60px] w-[60px] bg-white flex items-center justify-center rounded'>
+        <div 
+        onClick={()=>setshowCart(true)}
+        className='relative  shadow-2xl h-[60px] w-[60px] bg-white flex items-center justify-center rounded'>
              <span className='absolute top-0.5 right-2 text-green-500 text-xl'>0</span>
             <LuShoppingBag className='h-[30px] w-[30px] text-4xl text-green-500' />
         </div>
