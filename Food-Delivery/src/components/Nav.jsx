@@ -9,6 +9,7 @@ const Nav = () => {
  //getting data from contextAPI
    let {input,setInput,Cate,setCate, showCart, setshowCart} = useContext(dataContext)
 
+   //filter items by search
    useEffect(()=>{
        let newlist = food_items.filter((item)=>(item.food_name.includes(input) || item.food_name.toLowerCase().includes(input)))
        setCate(newlist)
