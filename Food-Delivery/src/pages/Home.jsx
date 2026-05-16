@@ -5,6 +5,7 @@ import {food_items} from '../food'
 import Card from '../components/Card'
 import { dataContext } from '../context/UserContext'
 import { RxCross2 } from "react-icons/rx";
+import Card2 from '../components/Card2'
 
 const Home = () => {
   //filer product on the basis of category
@@ -47,17 +48,17 @@ const Home = () => {
         }
       </div>
 
-     //Add to cart
-      <div className={`h-full w-[40%] bg-white fixed top-0 right-0 
+     {/* //Add to cart sidebar */}
+      <div className={`h-full w-full md:w-[40%] flex flex-col items-center bg-gray-100 fixed top-0 right-0 
        transition-all duration-500
         ${showCart? "translate-x-0 ":"translate-x-full"}`}>
-           <header className='flex items-center justify-between p-7'>
-               <span className='text-3xl font-semibold text-green-400'>Order items</span>
+           <header className='w-full flex items-center justify-between p-7'>
+               <span className='text-3xl font-semibold justify-center text-green-400'>Order items</span>
                <RxCross2 
                onClick={()=> setshowCart(false)}
                className='text-3xl text-green-400' />
            </header>
-
+          <Card2 />
       </div>
     </div>
   )
