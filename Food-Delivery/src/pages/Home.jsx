@@ -6,6 +6,7 @@ import Card from '../components/Card'
 import { dataContext } from '../context/UserContext'
 import { RxCross2 } from "react-icons/rx";
 import Card2 from '../components/Card2'
+import { useSelector } from 'react-redux'
 
 const Home = () => {
   //filer product on the basis of category
@@ -20,6 +21,9 @@ const Home = () => {
       setCate(newlist)
     }
   }
+  //redux part
+  let items = useSelector(state=>state.cart)
+ 
 
   return (
     <div className='bg-slate-200'>
@@ -58,7 +62,13 @@ const Home = () => {
                onClick={()=> setshowCart(false)}
                className='text-3xl text-green-400' />
            </header>
-          <Card2 />
+           <div className='w-full mt-5 flex items-center flex-col gap-8 ' >
+          {
+            items.map((item)=>(
+              <Card2  name={item.name} price={item.price} image={item.image} id={item.id} qty={item.qty}/>
+            ))
+          }
+          </div>
       </div>
     </div>
   )

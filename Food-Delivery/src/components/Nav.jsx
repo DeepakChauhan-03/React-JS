@@ -4,6 +4,7 @@ import { IoIosSearch } from "react-icons/io";
 import { LuShoppingBag } from "react-icons/lu";
 import { dataContext } from '../context/UserContext';
 import { food_items } from '../food';
+import { useSelector } from 'react-redux';
 
 const Nav = () => {
  //getting data from contextAPI
@@ -15,6 +16,8 @@ const Nav = () => {
        setCate(newlist)
    },[input])
 
+    //redux part
+  let items = useSelector(state=>state.cart)
   return (
     <div className="nav w-full h-25 flex items-center justify-between p-5 md:p-7 ">
         <div className='text-4xl shadow-2xl h-[60px] w-[60px] bg-white flex items-center justify-center rounded'>
@@ -36,7 +39,7 @@ const Nav = () => {
         <div 
         onClick={()=>setshowCart(true)}
         className='relative  shadow-2xl h-[60px] w-[60px] bg-white flex items-center justify-center rounded'>
-             <span className='absolute top-0.5 right-2 text-green-500 text-xl'>0</span>
+             <span className='absolute top-0.5 right-1.5 font-medium text-green-500 text-xl'>{items.length}</span>
             <LuShoppingBag className='h-[30px] w-[30px] text-4xl text-green-500' />
         </div>
     </div>
