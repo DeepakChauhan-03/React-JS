@@ -24,6 +24,11 @@ const Home = () => {
   //redux part
   let items = useSelector(state=>state.cart)
  
+  //a variable where subtotal item price is stored
+  let subtotal = items.reduce((total,item)=> total+item.qty*item.price,0)
+  let deliveryFee = 20;
+  let taxes = subtotal*0.5/100;
+  let total = Math.floor(subtotal+deliveryFee+taxes);
 
   return (
     <div className='bg-slate-200'>
@@ -54,7 +59,7 @@ const Home = () => {
 
      {/* //Add to cart sidebar */}
       <div className={`h-full w-full md:w-[40%] flex flex-col items-center bg-gray-100 fixed top-0 right-0 
-       transition-all duration-500
+       transition-all duration-500 overflow-auto
         ${showCart? "translate-x-0 ":"translate-x-full"}`}>
            <header className='w-full flex items-center justify-between p-7'>
                <span className='text-3xl font-semibold justify-center text-green-400'>Order items</span>
@@ -69,6 +74,33 @@ const Home = () => {
             ))
           }
           </div>
+          {/* //below the cart details where price section is shown */}
+        
+          <div className='w-full border-t-2 border-b-2 border-gray-500 mt-7 pb-6 '>
+             <div className='w-full flex justify-between px-8 items-center mt-5'>
+              <span className='text-lg text-gray-600 font-semibold'>Subtotal : </span>
+              <span className='text-green-400 font-semibold text-lg '> Rs {subtotal}/-</span>
+             </div>
+             <div>
+              <div className='w-full flex justify-between px-8 items-center mt-5'>
+              <span className='text-lg text-gray-600 font-semibold'>Delivery Fee : </span>
+              <span className='text-green-400 font-semibold text-lg '> Rs {deliveryFee}/-</span>
+             </div>
+             </div>
+             <div>
+              <div className='w-full flex justify-between px-8 items-center mt-5'>
+              <span className='text-lg text-gray-600 font-semibold'>Taxes : </span>
+              <span className='text-green-400 font-semibold text-lg '> Rs {taxes}/-</span>
+             </div>
+             </div>
+          </div>
+          {/* //total price */}
+          <div className='w-full flex justify-between px-8 items-center mt-5'>
+              <span className='text-2xl text-gray-700 font-bold'>Total : </span>
+              <span className='text-green-500 font-bold text-2xl '> Rs {total}/-</span>
+             </div>
+             <button className='w-[84%] p-3 rounded-lg hover:bg-green-500 transition-all 
+          bg-green-400 text-white mt-7 mb-10'>Place Order</button>
       </div>
     </div>
   )
