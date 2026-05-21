@@ -1,7 +1,7 @@
 import React from 'react'
 import { RiDeleteBin6Line } from "react-icons/ri"; 
 import { useDispatch } from 'react-redux';
-import { RemoveItem } from '../redux/cartSlice';
+import { DecrementQty, IncrementQty, RemoveItem } from '../redux/cartSlice';
 
 
 // this component contain add-to-cart details
@@ -21,9 +21,9 @@ const Card2 = ({name,price,image,id,qty}) => {
         <div className='w-[40%] h-full  flex flex-col items-start p-2 justify-center gap-4'>
             <span className='font-semibold text-xl'>{name}</span>
             <div className='h-10 w-25 p-2 text-xl text-green-500 flex items-center justify-between border-2 border-green-500 rounded-xl '>
-                <div>-</div>
+                <div onClick={()=>{qty>1 ? dispatch(DecrementQty(id)): 1}}>-</div>
                 <div className='bg-gray-300 w-10  px-4'>{qty}</div>
-                <div>+</div>
+                <div onClick={()=>{dispatch(IncrementQty(id))}}>+</div>
             </div>
         </div>
        </div>
